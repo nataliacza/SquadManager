@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\JwtConfiguration\" />
-    <Folder Include="Configuration\ServicesConfiguration\" />
     <Folder Include="Core\Accounts\" />
     <Folder Include="Core\Dogs\" />
     <Folder Include="Core\Exams\" />
