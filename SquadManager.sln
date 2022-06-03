@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquadManager", "SquadManager\SquadManager.csproj", "{B0FFC22F-473F-48A3-9E3E-D330705BF67C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0FFC22F-473F-48A3-9E3E-D330705BF67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FFC22F-473F-48A3-9E3E-D330705BF67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FFC22F-473F-48A3-9E3E-D330705BF67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FFC22F-473F-48A3-9E3E-D330705BF67C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A5FD3F1-3F52-4D85-91D7-788C138ED8F1}
+	EndGlobalSection
+EndGlobal
