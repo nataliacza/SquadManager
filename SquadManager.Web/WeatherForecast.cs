@@ -1,4 +1,4 @@
-namespace SquadManager;
+namespace SquadManager.Web;
 
 public class WeatherForecast
 {
