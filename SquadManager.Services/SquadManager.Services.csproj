@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\JwtConfiguration\" />
+    <Folder Include="Configuration\ServicesConfiguration\" />
+    <Folder Include="Core\Accounts\" />
+    <Folder Include="Core\Dogs\" />
+    <Folder Include="Core\Exams\" />
+    <Folder Include="Core\MemberProperties\" />
+    <Folder Include="Core\Members\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SquadManager.Database\SquadManager.Database.csproj" />
+    <ProjectReference Include="..\SquadManager.Dtos\SquadManager.Dtos.csproj" />
+  </ItemGroup>
+
+</Project>
