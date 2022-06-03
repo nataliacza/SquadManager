@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SquadManager.Database\SquadManager.Database.csproj" />
+    <ProjectReference Include="..\SquadManager.Identity\SquadManager.Identity.csproj" />
     <ProjectReference Include="..\SquadManager.Services\SquadManager.Services.csproj" />
   </ItemGroup>
 

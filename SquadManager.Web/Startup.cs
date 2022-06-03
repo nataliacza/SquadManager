@@ -11,6 +11,7 @@ using System.Text;
 using SquadManager.Services.Configuration;
 using SquadManager.Database.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SquadManager.Web;
 public class Startup
@@ -25,25 +26,27 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-        services.Configure<JwtConfiguration>(options => _configuration.GetSection("Jwt").Bind(options));
-
-        var connectionString = _configuration.GetConnectionString("DefaultConnection");
-
-        services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(connectionString.ToString()));
-
-        services.AddSwaggerGen();
-
-        services.AddAutomapper();
+        // Project services
         services.AddServices();
 
+        // Db setup
+        var defaultConnectionString = _configuration.GetConnectionString("DefaultConnection");
+        var identityConnectionString = _configuration.GetConnectionString("IdentityDbConnection");
+
+        services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(defaultConnectionString.ToString()));
+
+        services.AddDbContext<IdentityDbContext>(options =>
+                    options.UseSqlServer(identityConnectionString.ToString()));
+
+        // Adding Identity and Authentication
+        services.Configure<JwtConfiguration>(
+            options => _configuration.GetSection("Jwt").Bind(options));
+
         services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-        services.AddHttpContextAccessor();
-
-        // Adding Authentication
         services
             .AddAuthentication(options =>
             {
@@ -57,7 +60,8 @@ public class Startup
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
                     ValidateIssuerSigningKey = true,
                     ValidateLifetime = true,
                     ValidateAudience = false,
@@ -66,6 +70,11 @@ public class Startup
 
             });
 
+        // Other
+        services.AddAutomapper();
+        services.AddSwaggerGen();
+
+        services.AddHttpContextAccessor();
         services.AddControllersWithViews();
         services.AddRazorPages();
     }
