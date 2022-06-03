@@ -4,20 +4,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{4C888DDE-6F16-4448-9863-298887A02224}"
-	ProjectSection(ProjectDependencies) = postProject
-		{40A8E53F-435A-4B80-931A-4184D56B6379} = {40A8E53F-435A-4B80-931A-4184D56B6379}
-		{A64FF7AD-CE7C-45D7-A608-B5476725C6C3} = {A64FF7AD-CE7C-45D7-A608-B5476725C6C3}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadManager.Web", "SquadManager.Web\SquadManager.Web.csproj", "{F6C0B325-A3C6-4460-989F-4F90C0D9E1D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadManager.Dtos", "SquadManager.Dtos\SquadManager.Dtos.csproj", "{A64FF7AD-CE7C-45D7-A608-B5476725C6C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadManager.Services", "SquadManager.Services\SquadManager.Services.csproj", "{40A8E53F-435A-4B80-931A-4184D56B6379}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9B754EC7-4D83-4C60-99FF-1232511E18FA} = {9B754EC7-4D83-4C60-99FF-1232511E18FA}
-		{F6C0B325-A3C6-4460-989F-4F90C0D9E1D1} = {F6C0B325-A3C6-4460-989F-4F90C0D9E1D1}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadManager.Database", "SquadManager.Database\SquadManager.Database.csproj", "{9B754EC7-4D83-4C60-99FF-1232511E18FA}"
 EndProject
