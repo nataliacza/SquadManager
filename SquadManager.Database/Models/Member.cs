@@ -6,7 +6,7 @@ public class Member
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
-    public int Mobile { get; set; }
+    public string Mobile { get; set; } = null!;
 
     public Guid PropertyId { get; set; }
     public virtual MemberProperty Properties { get; set; } = null!;

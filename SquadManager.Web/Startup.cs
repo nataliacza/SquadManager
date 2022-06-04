@@ -1,17 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using SquadManager.Database;
-using SquadManager.Web.Configuration;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using SquadManager.Services.Configuration;
-using SquadManager.Database.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using SquadManager.Database;
+using SquadManager.Services.Configuration;
+using SquadManager.Web.Configuration;
+using System.Text;
 
 namespace SquadManager.Web;
 public class Startup
@@ -27,7 +22,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         // Project services
-        services.AddServices();
+        services.AddCoreServices();
 
         // Db setup
         var defaultConnectionString = _configuration.GetConnectionString("DefaultConnection");

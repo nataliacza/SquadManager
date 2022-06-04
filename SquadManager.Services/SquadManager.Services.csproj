@@ -11,8 +11,11 @@
     <Folder Include="Core\Dogs\" />
     <Folder Include="Core\Exams\" />
     <Folder Include="Core\MemberProperties\" />
-    <Folder Include="Core\Members\" />
-    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>
