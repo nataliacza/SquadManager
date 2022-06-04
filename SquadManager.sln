@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadManager.Services", "Sq
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquadManager.Database", "SquadManager.Database\SquadManager.Database.csproj", "{9B754EC7-4D83-4C60-99FF-1232511E18FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquadManager.Identity", "SquadManager.Identity\SquadManager.Identity.csproj", "{B17F9BD1-2CDD-443A-BC30-2485243BB4F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9B754EC7-4D83-4C60-99FF-1232511E18FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B754EC7-4D83-4C60-99FF-1232511E18FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B754EC7-4D83-4C60-99FF-1232511E18FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17F9BD1-2CDD-443A-BC30-2485243BB4F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17F9BD1-2CDD-443A-BC30-2485243BB4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17F9BD1-2CDD-443A-BC30-2485243BB4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17F9BD1-2CDD-443A-BC30-2485243BB4F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
