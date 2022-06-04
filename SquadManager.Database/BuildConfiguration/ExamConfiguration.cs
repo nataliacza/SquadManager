@@ -23,13 +23,5 @@ public class ExamConfiguration : IEntityTypeConfiguration<Exam>
 
         builder.Property(x => x.ExamExpiration)
             .IsRequired(true);
-
-        builder.HasOne(x => x.Member)
-            .WithMany(x => x.Exams)
-            .IsRequired(true);
-
-        builder.HasOne(x => x.Dog)
-            .WithMany(x => x.Exams)
-            .IsRequired(true);
     }
 }

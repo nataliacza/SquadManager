@@ -11,6 +11,4 @@ public class Dog
 
     public Guid OwnerId { get; set; }
     public virtual Member Owner { get; set; } = null!;
-
-    public virtual ICollection<Exam>? Exams { get; set; }
 }

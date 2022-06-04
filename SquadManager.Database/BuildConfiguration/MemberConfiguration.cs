@@ -33,6 +33,7 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
 
         builder.HasOne(x => x.Properties)
             .WithOne(x => x.Member)
+            .HasForeignKey<Member>(x => x.Id)
             .IsRequired(true);
 
         builder.HasMany(x => x.Dogs)

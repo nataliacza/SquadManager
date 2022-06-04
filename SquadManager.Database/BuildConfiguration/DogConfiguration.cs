@@ -37,8 +37,5 @@ public class DogConfiguration : IEntityTypeConfiguration<Dog>
         builder.HasOne(x => x.Owner)
             .WithMany(x => x.Dogs)
             .IsRequired(true);
-
-        //builder.HasMany(x => x.Exams)
-        //    .WithMany(x => x.Member);
     }
 }

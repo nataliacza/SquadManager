@@ -13,4 +13,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Dog> Dogs { get; set; } = null!;
     public DbSet<Exam> Exams { get; set; } = null!;
     public DbSet<MemberProperty> MemberProperties { get; set; } = null!;
+    public DbSet<DogExam> DogExams { get; set; } = null!;
+    public DbSet<MemberExam> MemberExams { get; set; } = null!;
 }

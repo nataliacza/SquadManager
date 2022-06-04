@@ -80,6 +80,7 @@ public class MemberPropertiesConfiguration : IEntityTypeConfiguration<MemberProp
 
         builder.HasOne(x => x.Member)
             .WithOne(x => x.Properties)
+            .HasForeignKey<Member>(x => x.PropertyId)
             .IsRequired(true);
     }
 }

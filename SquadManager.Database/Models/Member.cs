@@ -12,5 +12,4 @@ public class Member
     public virtual MemberProperty Properties { get; set; } = null!;
 
     public virtual ICollection<Dog>? Dogs { get; set; }
-    public virtual ICollection<Exam>? Exams { get; set; }
 }
