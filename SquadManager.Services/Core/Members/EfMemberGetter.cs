@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
-using SquadManager.Database.Models;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -23,6 +22,7 @@ public class EfMemberGetter : IMemberGetter
         var member = await _dbContext.Members
             .FirstOrDefaultAsync(x => x.Id == id);
 
+        // TODO: cover exceptions
         if (member == null)
         {
             return null;
