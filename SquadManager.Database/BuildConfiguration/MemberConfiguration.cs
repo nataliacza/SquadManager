@@ -16,7 +16,7 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
             .IsRequired(true);
 
         builder.Property(x => x.FirstName)
-            .HasMaxLength(25)
+            .HasMaxLength(30)
             .IsRequired(true);
 
         builder.Property(x => x.LastName)
