@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SquadManager.Services;
+using SquadManager.Services.Core.Members;
+using SquadManager.Services.Interfaces.Member;
 
 namespace SquadManager.Services.Configuration;
 public static class ServicesConfiguration
 {
-    public static void AddServices(this IServiceCollection services)
+    public static void AddCoreServices(this IServiceCollection services)
     {
-        //services.AddScoped<>();
-        
+        services.AddScoped<IMemberCreator, EfMemberCreator>();
+
     }
 }

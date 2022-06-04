@@ -9,9 +9,12 @@
   <ItemGroup>
     <Folder Include="Accounts\" />
     <Folder Include="Dogs\" />
-    <Folder Include="Members\" />
     <Folder Include="Exams\" />
     <Folder Include="MemberProperties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SquadManager.Database\SquadManager.Database.csproj" />
   </ItemGroup>
 
 </Project>
