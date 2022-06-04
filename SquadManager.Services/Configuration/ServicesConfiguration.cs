@@ -8,6 +8,7 @@ public static class ServicesConfiguration
     public static void AddCoreServices(this IServiceCollection services)
     {
         services.AddScoped<IMemberCreator, EfMemberCreator>();
-
+        services.AddScoped<IMemberGetter, EfMemberGetter>();
+        
     }
 }
