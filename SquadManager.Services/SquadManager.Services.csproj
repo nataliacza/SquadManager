@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Core\Accounts\" />
-    <Folder Include="Core\Dogs\" />
     <Folder Include="Core\Exams\" />
     <Folder Include="Core\MemberProperties\" />
   </ItemGroup>

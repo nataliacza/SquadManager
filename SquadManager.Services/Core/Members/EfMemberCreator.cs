@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Database.Models;
 using SquadManager.Dtos.Members;

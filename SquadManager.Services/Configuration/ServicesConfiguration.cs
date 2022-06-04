@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SquadManager.Services.Core.Dogs;
 using SquadManager.Services.Core.Members;
+using SquadManager.Services.Interfaces.Dog;
 using SquadManager.Services.Interfaces.Member;
 
 namespace SquadManager.Services.Configuration;
@@ -9,6 +11,9 @@ public static class ServicesConfiguration
     {
         services.AddScoped<IMemberCreator, EfMemberCreator>();
         services.AddScoped<IMemberGetter, EfMemberGetter>();
-        
+
+        services.AddScoped<IDogCreator, EfDogCreator>();
+        services.AddScoped<IDogGetter, EfDogGetter>();
+
     }
 }
