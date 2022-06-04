@@ -35,6 +35,11 @@ public class EfMemberGetter : IMemberGetter
 
     public async Task<IEnumerable<MemberDto>> GetMemberList()
     {
-        throw new NotImplementedException();
+        var members = await _dbContext.Members
+            .ToArrayAsync();
+
+        var dto = _autoMapper.Map<IEnumerable<MemberDto>>(members);
+
+        return dto;
     }
 }

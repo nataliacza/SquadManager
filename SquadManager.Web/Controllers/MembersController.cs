@@ -32,4 +32,12 @@ public class MembersController : ControllerBase
 
         return Ok(action);
     }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<MemberDto>>> GetMembers()
+    {
+        var action = await _memberGetter.GetMemberList();
+
+        return Ok(action);
+    }
 }
