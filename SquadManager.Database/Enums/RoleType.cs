@@ -13,5 +13,6 @@ public enum RoleType
     Gospodarz = 9,
     Członek = 10,
     Członek_Wspierający = 11,
-    Członek_Honorowy = 12
+    Członek_Honorowy = 12,
+    Stażysta = 13
 }

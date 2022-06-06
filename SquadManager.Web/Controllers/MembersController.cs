@@ -26,9 +26,27 @@ public class MembersController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<MemberDto>> GetMemberId([FromRoute] Guid id)
+    public async Task<ActionResult<MemberBasicsDto>> GetMemberId([FromRoute] Guid id)
     {
         var action = await _memberGetter.GetMember(id);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(action);
+    }
+
+    [HttpGet("{id:guid}/MemberProperties")]
+    public async Task<ActionResult<MemberPropertyDto>> GetMemberPropertyId([FromRoute] Guid id)
+    {
+        var action = await _memberGetter.GetMemberProperty(id);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
 
         return Ok(action);
     }
