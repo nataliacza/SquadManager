@@ -24,7 +24,6 @@ public class DogConfiguration : IEntityTypeConfiguration<Dog>
             .IsRequired(false);
 
         builder.Property(x => x.Gender)
-            .HasMaxLength(50)
             .IsRequired(false);
 
         builder.Property(x => x.DateOfBirth)

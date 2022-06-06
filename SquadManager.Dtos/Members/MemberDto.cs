@@ -13,4 +13,5 @@ public class MemberDto
     public Guid PropertyId { get; set; }
 
     public IEnumerable<Dog>? Dogs { get; set; }
+    // TODO: create map for collection
 }
