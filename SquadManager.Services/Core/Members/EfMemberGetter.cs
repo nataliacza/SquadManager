@@ -51,16 +51,18 @@ public class EfMemberGetter : IMemberGetter
     public async Task<IEnumerable<MemberDogDto>> GetMemberDogList(Guid id)
     {
         var member = await _dbContext.Members
-            .Include(x => x.Dogs)
             .FirstOrDefaultAsync(x => x.Id == id);
 
         if (member == null)
         {
             return null;
         }
+
+        var dogs = await _dbContext.Dogs
+            .Where(x => x.OwnerId == member.Id)
+            .ToArrayAsync();
         
-        //TODO: work on mapping!
-        var dto = _autoMapper.Map<IEnumerable<MemberDogDto>>(member);
+        var dto = _autoMapper.Map<IEnumerable<MemberDogDto>>(dogs);
 
         return dto;
     }
