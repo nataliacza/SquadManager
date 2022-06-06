@@ -14,11 +14,10 @@ public class MemberProfiles : Profile
         CreateMap<CreateMemberDto, Member>()
             .ReverseMap();
 
-        CreateMap<Member, MemberDto>()
-            .ForMember(
-                d => d.Dogs,
-                opt => opt.MapFrom(
-                    s => s.Dogs)
-                );
+        CreateMap<MemberBasicsDto, Member>()
+            .ReverseMap();
+
+        CreateMap<MemberPropertyDto, MemberProperty>()
+            .ReverseMap();
     }
 }

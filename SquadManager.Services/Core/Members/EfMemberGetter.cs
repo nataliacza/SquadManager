@@ -17,18 +17,32 @@ public class EfMemberGetter : IMemberGetter
         _autoMapper = autoMapper;
     }
 
-    public async Task<MemberDto> GetMember(Guid id)
+    public async Task<MemberBasicsDto> GetMember(Guid id)
     {
         var member = await _dbContext.Members
             .FirstOrDefaultAsync(x => x.Id == id);
 
-        // TODO: cover exceptions
         if (member == null)
         {
             return null;
         }
 
-        var dto = _autoMapper.Map<MemberDto>(member);
+        var dto = _autoMapper.Map<MemberBasicsDto>(member);
+
+        return dto;
+    }
+
+    public async Task<MemberPropertyDto> GetMemberProperty(Guid id)
+    {
+        var member = await _dbContext.MemberProperties
+            .FirstOrDefaultAsync(x => x.MemberId == id);
+
+        if (member == null)
+        {
+            return null;
+        }
+
+        var dto = _autoMapper.Map<MemberPropertyDto>(member);
 
         return dto;
     }
