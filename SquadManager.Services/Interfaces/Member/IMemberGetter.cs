@@ -6,5 +6,6 @@ public interface IMemberGetter
 {
     Task<MemberBasicsDto> GetMember(Guid id);
     Task<MemberPropertyDto> GetMemberProperty(Guid id);
+    Task<IEnumerable<MemberDogDto>> GetMemberDogList(Guid id);
     Task<IEnumerable<MemberDto>> GetMemberList();
 }

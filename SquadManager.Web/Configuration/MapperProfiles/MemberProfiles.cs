@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SquadManager.Database.Models;
+using SquadManager.Dtos.Dogs;
 using SquadManager.Dtos.Members;
 
 namespace SquadManager.Web.Configuration.MapperProfiles;
@@ -18,6 +19,9 @@ public class MemberProfiles : Profile
             .ReverseMap();
 
         CreateMap<MemberPropertyDto, MemberProperty>()
+            .ReverseMap();
+
+        CreateMap<MemberDogDto, DogDto>()
             .ReverseMap();
     }
 }

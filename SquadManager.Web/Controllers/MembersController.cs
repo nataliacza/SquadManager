@@ -51,6 +51,19 @@ public class MembersController : ControllerBase
         return Ok(action);
     }
 
+    [HttpGet("{id:guid}/Dogs")]
+    public async Task<ActionResult<IEnumerable<MemberDogDto>>> GetMemberDogs([FromRoute] Guid id)
+    {
+        var action = await _memberGetter.GetMemberDogList(id);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(action);
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetMembers()
     {

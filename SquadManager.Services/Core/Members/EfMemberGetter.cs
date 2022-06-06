@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
+using SquadManager.Dtos.Dogs;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -43,6 +44,23 @@ public class EfMemberGetter : IMemberGetter
         }
 
         var dto = _autoMapper.Map<MemberPropertyDto>(member);
+
+        return dto;
+    }
+
+    public async Task<IEnumerable<MemberDogDto>> GetMemberDogList(Guid id)
+    {
+        var member = await _dbContext.Members
+            .Include(x => x.Dogs)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (member == null)
+        {
+            return null;
+        }
+        
+        //TODO: work on mapping!
+        var dto = _autoMapper.Map<IEnumerable<MemberDogDto>>(member);
 
         return dto;
     }
