@@ -17,7 +17,7 @@ public class EfMemberCreator : IMemberCreator
         _autoMapper = autoMapper;
     }
 
-    public async Task<MemberDto> CreateMember(CreateMemberDto createMemberDto)
+    public async Task<MemberDto> CreateMember(SaveMemberDto createMemberDto)
     {
         var member = _autoMapper.Map<Member>(createMemberDto);
 
