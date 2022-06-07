@@ -5,8 +5,6 @@ namespace SquadManager.Dtos.Members;
 public class MemberPropertyDto
 {
     public Guid Id { get; set; }
-    public Guid MemberId { get; set; }
-
     public RoleType RoleType { get; set; }
 
     public bool? Kpp { get; set; }
