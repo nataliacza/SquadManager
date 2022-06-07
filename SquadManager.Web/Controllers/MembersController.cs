@@ -10,15 +10,20 @@ public class MembersController : ControllerBase
 {
     private readonly IMemberCreator _memberCreator;
     private readonly IMemberGetter _memberGetter;
+    private readonly IMemberUpdater _memberUpdater;
 
-    public MembersController(IMemberCreator memberCreator, IMemberGetter memberGetter)
+    public MembersController(
+        IMemberCreator memberCreator,
+        IMemberGetter memberGetter,
+        IMemberUpdater memberUpdater)
     {
         _memberCreator = memberCreator;
         _memberGetter = memberGetter;
+        _memberUpdater = memberUpdater;
     }
 
     [HttpPost]
-    public async Task<ActionResult<MemberDto>> CreateMember([FromBody] CreateMemberDto createMemberDto)
+    public async Task<ActionResult<MemberDto>> CreateMember([FromBody] SaveMemberDto createMemberDto)
     {
         var action = await _memberCreator.CreateMember(createMemberDto);
 
@@ -71,6 +76,20 @@ public class MembersController : ControllerBase
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetMembers()
     {
         var action = await _memberGetter.GetMemberList();
+
+        return Ok(action);
+    }
+
+    [HttpPatch("{id:guid}")]
+    public async Task<ActionResult<MemberDto>> UpdateMemberDetails(
+        [FromRoute] Guid id, [FromBody] SaveMemberDto memberDto)
+    {
+        var action = await _memberUpdater.UpdateMemberBasicDetails(id, memberDto);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
 
         return Ok(action);
     }
