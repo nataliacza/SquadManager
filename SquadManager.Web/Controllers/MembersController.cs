@@ -22,7 +22,10 @@ public class MembersController : ControllerBase
     {
         var action = await _memberCreator.CreateMember(createMemberDto);
 
-        return Ok(action);
+        return CreatedAtAction(
+            nameof(GetMemberId),
+            new { id = action.Id },
+            action);
     }
 
     [HttpGet("{id:guid}")]
