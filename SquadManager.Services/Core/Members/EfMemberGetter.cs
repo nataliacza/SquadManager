@@ -25,7 +25,7 @@ public class EfMemberGetter : IMemberGetter
 
         if (member == null)
         {
-            return null;
+            return null!;
         }
 
         var dto = _autoMapper.Map<MemberBasicsDto>(member);
@@ -40,7 +40,7 @@ public class EfMemberGetter : IMemberGetter
 
         if (member == null)
         {
-            return null;
+            return null!;
         }
 
         var dto = _autoMapper.Map<MemberPropertyDto>(member);
@@ -55,7 +55,7 @@ public class EfMemberGetter : IMemberGetter
 
         if (member == null)
         {
-            return null;
+            return null!;
         }
 
         var dogs = await _dbContext.Dogs
