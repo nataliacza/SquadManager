@@ -15,7 +15,7 @@ public class MemberProfiles : Profile
         CreateMap<SaveMemberDto, Member>()
             .ReverseMap();
 
-        CreateMap<MemberBasicsDto, Member>()
+        CreateMap<MemberDetailsDto, Member>()
             .ReverseMap();
 
         CreateMap<MemberPropertyDto, MemberProperty>()

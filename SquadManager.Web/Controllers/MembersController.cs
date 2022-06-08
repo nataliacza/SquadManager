@@ -28,15 +28,15 @@ public class MembersController : ControllerBase
         var action = await _memberCreator.CreateMember(createMemberDto);
 
         return CreatedAtAction(
-            nameof(GetMemberId),
+            nameof(GetMemberDetailsById),
             new { id = action.Id },
             action);
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<MemberBasicsDto>> GetMemberId([FromRoute] Guid id)
+    public async Task<ActionResult<MemberDetailsDto>> GetMemberDetailsById([FromRoute] Guid id)
     {
-        var action = await _memberGetter.GetMember(id);
+        var action = await _memberGetter.GetMemberDetails(id);
 
         if (action == null)
         {
@@ -47,7 +47,7 @@ public class MembersController : ControllerBase
     }
 
     [HttpGet("{id:guid}/MemberProperties")]
-    public async Task<ActionResult<MemberPropertyDto>> GetMemberPropertyId([FromRoute] Guid id)
+    public async Task<ActionResult<MemberPropertyDto>> GetMemberPropertyById([FromRoute] Guid id)
     {
         var action = await _memberGetter.GetMemberProperty(id);
 
