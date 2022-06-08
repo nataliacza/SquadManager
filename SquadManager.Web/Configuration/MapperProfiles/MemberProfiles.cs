@@ -23,5 +23,12 @@ public class MemberProfiles : Profile
 
         CreateMap<MemberDogDto, Dog>()
             .ReverseMap();
+
+        CreateMap<UpdateMemberPropertyDto, MemberProperty>()
+            .ReverseMap();
+
+        CreateMap<UpdateMemberPropertyDto, MemberDto>()
+            .ReverseMap();
+
     }
 }

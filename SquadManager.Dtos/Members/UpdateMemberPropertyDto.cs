@@ -5,13 +5,12 @@ namespace SquadManager.Dtos.Members;
 
 public class UpdateMemberPropertyDto
 {
-    [EnumDataType(typeof(RoleType))]
     public RoleType RoleType { get; set; }
 
     public bool? Kpp { get; set; }
-    [RequiredIf("Kpp", "true")]
+    //[RequiredIf("Kpp", "1")]
     public DateTime? KppDate { get; set; }
-    [RequiredIf("Kpp", "true")]
+    //[RequiredIf("Kpp", "1")]
     public DateTime? KppDExpiration { get; set; }
 
     public bool? MedicalExamination { get; set; }
