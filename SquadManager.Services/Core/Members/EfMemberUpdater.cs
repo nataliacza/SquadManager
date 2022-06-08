@@ -46,7 +46,9 @@ public class EfMemberUpdater : IMemberUpdater
         {
             return null!;
         }
-
+        
+        //TODO: map changes enum state to 0 if null
+        //TODO: cover if false, set date to null
         var update = _autoMapper.Map(updateDto, property);
 
         _dbContext.MemberProperties.Update(property);
