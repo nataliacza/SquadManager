@@ -4,5 +4,5 @@ namespace SquadManager.Services.Interfaces.Member;
 
 public interface IMemberCreator
 {
-    Task<MemberDto> CreateMember(CreateMemberDto memberDto);
+    Task<MemberDto> CreateMember(SaveMemberDto memberDto);
 }

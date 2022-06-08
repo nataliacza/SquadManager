@@ -15,5 +15,6 @@ public static class ServicesConfiguration
         services.AddScoped<IDogCreator, EfDogCreator>();
         services.AddScoped<IDogGetter, EfDogGetter>();
 
+        services.AddScoped<IMemberUpdater, EfMemberUpdater>();
     }
 }

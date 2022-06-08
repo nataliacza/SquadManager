@@ -2,7 +2,7 @@
 
 namespace SquadManager.Dtos.Members;
 
-public class CreateMemberDto
+public class SaveMemberDto
 {
     [Required]
     [MaxLength(30)]

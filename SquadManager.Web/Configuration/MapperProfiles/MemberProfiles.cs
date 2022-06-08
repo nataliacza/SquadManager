@@ -12,10 +12,10 @@ public class MemberProfiles : Profile
         CreateMap<MemberDto, Member>()
             .ReverseMap();
 
-        CreateMap<CreateMemberDto, Member>()
+        CreateMap<SaveMemberDto, Member>()
             .ReverseMap();
 
-        CreateMap<MemberBasicsDto, Member>()
+        CreateMap<MemberDetailsDto, Member>()
             .ReverseMap();
 
         CreateMap<MemberPropertyDto, MemberProperty>()
