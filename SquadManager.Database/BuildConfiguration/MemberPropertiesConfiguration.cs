@@ -26,7 +26,7 @@ public class MemberPropertiesConfiguration : IEntityTypeConfiguration<MemberProp
         builder.Property(x => x.KppDate)
             .IsRequired(false);
 
-        builder.Property(x => x.KppDExpiration)
+        builder.Property(x => x.KppExpiration)
             .IsRequired(false);
 
         builder.Property(x => x.MedicalExamination)

@@ -9,7 +9,7 @@ public class MemberPropertyDto
 
     public bool? Kpp { get; set; }
     public DateTime? KppDate { get; set; }
-    public DateTime? KppDExpiration { get; set; }
+    public DateTime? KppExpiration { get; set; }
 
     public bool? MedicalExamination { get; set; }
     public DateTime? MedicalExaminationDate { get; set; }
