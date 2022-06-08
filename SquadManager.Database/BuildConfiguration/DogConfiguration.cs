@@ -1,6 +1,7 @@
 ﻿using SquadManager.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SquadManager.Database.Enums;
 
 namespace SquadManager.Database.BuildConfiguration;
 
@@ -24,6 +25,7 @@ public class DogConfiguration : IEntityTypeConfiguration<Dog>
             .IsRequired(false);
 
         builder.Property(x => x.Gender)
+            .HasDefaultValue(DogGender.Brak)
             .IsRequired(false);
 
         builder.Property(x => x.DateOfBirth)

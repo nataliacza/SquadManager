@@ -1,6 +1,7 @@
 ﻿using SquadManager.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SquadManager.Database.Enums;
 
 namespace SquadManager.Database.BuildConfiguration;
 
@@ -16,6 +17,7 @@ public class ExamConfiguration : IEntityTypeConfiguration<Exam>
             .IsRequired(true);
 
         builder.Property(x => x.ExamType)
+            .HasDefaultValue(ExamType.Brak)
             .IsRequired(true);
 
         builder.Property(x => x.ExamDate)

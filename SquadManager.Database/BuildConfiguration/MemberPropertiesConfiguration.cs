@@ -1,6 +1,7 @@
 ﻿using SquadManager.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SquadManager.Database.Enums;
 
 namespace SquadManager.Database.BuildConfiguration;
 
@@ -16,6 +17,7 @@ public class MemberPropertiesConfiguration : IEntityTypeConfiguration<MemberProp
             .IsRequired(true);
 
         builder.Property(x => x.RoleType)
+            .HasDefaultValue(RoleType.Brak)
             .IsRequired(false);
 
         builder.Property(x => x.Kpp)

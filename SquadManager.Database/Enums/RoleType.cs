@@ -2,6 +2,7 @@
 
 public enum RoleType
 {
+    Brak = 0,
     Prezes = 1,
     Naczelnik = 2,
     Zca_Naczelnika = 3,
