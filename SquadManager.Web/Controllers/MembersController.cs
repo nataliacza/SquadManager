@@ -84,7 +84,21 @@ public class MembersController : ControllerBase
     public async Task<ActionResult<MemberDto>> UpdateMemberDetails(
         [FromRoute] Guid id, [FromBody] SaveMemberDto memberDto)
     {
-        var action = await _memberUpdater.UpdateMemberBasicDetails(id, memberDto);
+        var action = await _memberUpdater.UpdateDetails(id, memberDto);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(action);
+    }
+
+    [HttpPatch("{id:guid}/MemberProperties")]
+    public async Task<ActionResult<MemberPropertyDto>> UpdateMemberProperties(
+        [FromRoute] Guid id, [FromBody] UpdateMemberPropertyDto propertyDto)
+    {
+        var action = await _memberUpdater.UpdateProperty(id, propertyDto);
 
         if (action == null)
         {

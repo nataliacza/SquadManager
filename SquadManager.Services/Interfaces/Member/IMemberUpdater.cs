@@ -4,6 +4,6 @@ namespace SquadManager.Services.Interfaces.Member;
 
 public interface IMemberUpdater
 {
-    Task<SaveMemberDto> UpdateMemberBasicDetails(Guid id, SaveMemberDto memberDto);
-    //Task<UpdateMemberPropertyDto> UpdateMemberProperty(Guid id);
+    Task<SaveMemberDto> UpdateDetails(Guid id, SaveMemberDto memberDto);
+    Task<UpdateMemberPropertyDto> UpdateProperty(Guid id, UpdateMemberPropertyDto propertyDto);
 }
