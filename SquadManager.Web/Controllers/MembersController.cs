@@ -28,13 +28,13 @@ public class MembersController : ControllerBase
         var action = await _memberCreator.CreateMember(createMemberDto);
 
         return CreatedAtAction(
-            nameof(GetMemberDetailsById),
+            nameof(GetMemberById),
             new { id = action.Id },
             action);
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<MemberDetailsDto>> GetMemberDetailsById([FromRoute] Guid id)
+    public async Task<ActionResult<MemberDetailsDto>> GetMemberById([FromRoute] Guid id)
     {
         var action = await _memberGetter.GetMemberDetails(id);
 
@@ -73,7 +73,7 @@ public class MembersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<MemberDto>>> GetMembers()
+    public async Task<ActionResult<IEnumerable<MemberDetailsDto>>> GetMembers()
     {
         var action = await _memberGetter.GetMemberList();
 
@@ -81,7 +81,7 @@ public class MembersController : ControllerBase
     }
 
     [HttpPatch("{id:guid}")]
-    public async Task<ActionResult<MemberDto>> UpdateMemberDetails(
+    public async Task<ActionResult<MemberDetailsDto>> UpdateMemberDetails(
         [FromRoute] Guid id, [FromBody] SaveMemberDto memberDto)
     {
         var action = await _memberUpdater.UpdateDetails(id, memberDto);

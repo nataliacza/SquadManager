@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
+using SquadManager.Database.Models;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -17,7 +18,7 @@ public class EfMemberUpdater : IMemberUpdater
         _autoMapper = mapper;
     }
 
-    public async Task<SaveMemberDto> UpdateDetails(Guid id, SaveMemberDto memberDto)
+    public async Task<MemberDetailsDto> UpdateDetails(Guid id, SaveMemberDto updateDto)
     {
         var member = await _dbContext.Members
             .FirstOrDefaultAsync(x => x.Id == id);
@@ -27,21 +28,17 @@ public class EfMemberUpdater : IMemberUpdater
             return null!;
         }
 
-        member.FirstName = memberDto.FirstName;
-        member.LastName = memberDto.LastName;
-        member.Email = memberDto.Email;
-        member.Mobile = memberDto.Mobile;
+        var update = _autoMapper.Map(updateDto, member);
 
         _dbContext.Members.Update(member);
         await _dbContext.SaveChangesAsync();
 
-        var dto = _autoMapper.Map<SaveMemberDto>(member);
+        var dto = _autoMapper.Map<MemberDetailsDto>(member);
 
         return dto;
     }
 
-    public async Task<UpdateMemberPropertyDto> UpdateProperty(
-        Guid id, UpdateMemberPropertyDto propertyDto)
+    public async Task<MemberPropertyDto> UpdateProperty(Guid id, UpdateMemberPropertyDto updateDto)
     {
         var property = await _dbContext.MemberProperties
             .FirstOrDefaultAsync(x => x.MemberId == id);
@@ -50,31 +47,58 @@ public class EfMemberUpdater : IMemberUpdater
         {
             return null!;
         }
+        
+        var update = _autoMapper.Map(updateDto, property);
 
-        property.RoleType = propertyDto.RoleType;
-        property.Kpp = propertyDto.Kpp;
-        property.KppDate = propertyDto.KppDate;
-        property.KppDExpiration = propertyDto.KppDExpiration;
-        property.MedicalExamination = propertyDto.MedicalExamination;
-        property.MedicalExaminationDate = propertyDto.MedicalExaminationDate;
-        property.MedicalExaminationExpiration = propertyDto.MedicalExaminationExpiration;
-        property.BasicCourse = propertyDto.BasicCourse;
-        property.BasicCourseDate = propertyDto.BasicCourseDate;
-        property.GuideCourse = propertyDto.GuideCourse;
-        property.GuideCourseDate = propertyDto.GuideCourseDate;
-        property.InstructorCourse = propertyDto.InstructorCourse;
-        property.InstructorCourseDate = propertyDto.InstructorCourseDate;
-        property.ExaminerCourse = propertyDto.ExaminerCourse;
-        property.ExaminerCourseDate = propertyDto.ExaminerCourseDate;
-        property.CommanderCourse = propertyDto.CommanderCourse;
-        property.CommanderCourseDate = propertyDto.CommanderCourseDate;
-        property.HeightCourse = propertyDto.HeightCourse;
-        property.HeightCourseDate = propertyDto.HeightCourseDate;
-        property.HelicopterCourse = propertyDto.HelicopterCourse;
-        property.HelicopterCourseDate = propertyDto.HelicopterCourseDate;
+        ResetDatesForFields(update, property);
 
-        var dto = _autoMapper.Map<UpdateMemberPropertyDto>(property);
+        _dbContext.MemberProperties.Update(property);
+        await _dbContext.SaveChangesAsync();
+
+        var dto = _autoMapper.Map<MemberPropertyDto>(property);
 
         return dto;
+    }
+
+    private static void ResetDatesForFields(MemberProperty update, MemberProperty property)
+    {
+        if (update.Kpp == false)
+        {
+            property.KppDate = null;
+            property.KppExpiration = null;
+        }
+        if (update.MedicalExamination == false)
+        {
+            property.MedicalExaminationDate = null;
+            property.MedicalExaminationExpiration = null;
+        }
+        if (update.BasicCourse == false)
+        {
+            property.BasicCourseDate = null;
+        }
+        if (update.GuideCourse == false)
+        {
+            property.GuideCourseDate = null;
+        }
+        if (update.InstructorCourse == false)
+        {
+            property.InstructorCourseDate = null;
+        }
+        if (update.ExaminerCourse == false)
+        {
+            property.ExaminerCourseDate = null;
+        }
+        if (update.CommanderCourse == false)
+        {
+            property.CommanderCourseDate = null;
+        }
+        if (update.HeightCourse == false)
+        {
+            property.HeightCourseDate = null;
+        }
+        if (update.HelicopterCourse == false)
+        {
+            property.HelicopterCourseDate = null;
+        }
     }
 }

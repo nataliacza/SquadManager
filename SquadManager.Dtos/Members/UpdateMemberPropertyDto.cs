@@ -1,79 +1,69 @@
-﻿using SquadManager.Database.Enums;
+﻿using SquadManager.Dtos.Validation;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace SquadManager.Dtos.Members;
 
 public class UpdateMemberPropertyDto
 {
-    [EnumDataType(typeof(RoleType))]
-    public RoleType RoleType { get; set; }
-
     public bool? Kpp { get; set; }
-    [RequiredIf("Kpp", "true")]
+    [RequiredIf(nameof(Kpp), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
+
     public DateTime? KppDate { get; set; }
-    [RequiredIf("Kpp", "true")]
-    public DateTime? KppDExpiration { get; set; }
+    [RequiredIf(nameof(Kpp), true)]
+    [DataType(DataType.Date)]
+    public DateTime? KppExpiration { get; set; }
 
     public bool? MedicalExamination { get; set; }
+    [RequiredIf(nameof(MedicalExamination), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? MedicalExaminationDate { get; set; }
+    [RequiredIf(nameof(MedicalExamination), true)]
+    [DataType(DataType.Date)]
     public DateTime? MedicalExaminationExpiration { get; set; }
 
     public bool? BasicCourse { get; set; }
+    [RequiredIf(nameof(BasicCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? BasicCourseDate { get; set; }
 
     public bool? GuideCourse { get; set; }
+    [RequiredIf(nameof(GuideCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? GuideCourseDate { get; set; }
 
     public bool? InstructorCourse { get; set; }
+    [RequiredIf(nameof(InstructorCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? InstructorCourseDate { get; set; }
 
     public bool? ExaminerCourse { get; set; }
+    [RequiredIf(nameof(ExaminerCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? ExaminerCourseDate { get; set; }
 
     public bool? CommanderCourse { get; set; }
+    [RequiredIf(nameof(CommanderCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? CommanderCourseDate { get; set; }
 
     public bool? HeightCourse { get; set; }
+    [RequiredIf(nameof(HeightCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? HeightCourseDate { get; set; }
 
     public bool? HelicopterCourse { get; set; }
+    [RequiredIf(nameof(HelicopterCourse), true)]
+    [DataType(DataType.Date)]
+    [NotFutureDate]
     public DateTime? HelicopterCourseDate { get; set; }
-}
-
-public class RequiredIfAttribute : ValidationAttribute
-{
-    RequiredAttribute _innerAttribute = new RequiredAttribute();
-    public string _dependentProperty { get; set; }
-    public object _targetValue { get; set; }
-
-    public RequiredIfAttribute(string dependentProperty, object targetValue)
-    {
-        this._dependentProperty = dependentProperty;
-        this._targetValue = targetValue;
-    }
-    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-    {
-        var field = validationContext.ObjectType.GetProperty(_dependentProperty);
-        if (field != null)
-        {
-            var dependentValue = field.GetValue(validationContext.ObjectInstance, null);
-            if ((dependentValue == null && _targetValue == null) || (dependentValue.Equals(_targetValue)))
-            {
-                if (!_innerAttribute.IsValid(value))
-                {
-                    string name = validationContext.DisplayName;
-                    string specificErrorMessage = ErrorMessage;
-                    if (specificErrorMessage.Length < 1)
-                        specificErrorMessage = $"{name} is required.";
-
-                    return new ValidationResult(specificErrorMessage, new[] { validationContext.MemberName });
-                }
-            }
-            return ValidationResult.Success;
-        }
-        else
-        {
-            return new ValidationResult(FormatErrorMessage(_dependentProperty));
-        }
-    }
 }
