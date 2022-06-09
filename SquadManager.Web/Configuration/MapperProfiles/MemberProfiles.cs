@@ -26,5 +26,8 @@ public class MemberProfiles : Profile
 
         CreateMap<UpdateMemberPropertyDto, MemberProperty>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+        CreateMap<UpdateMemberRoleDto, MemberProperty>()
+            .ReverseMap();
     }
 }
