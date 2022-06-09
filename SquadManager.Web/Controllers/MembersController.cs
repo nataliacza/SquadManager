@@ -80,7 +80,7 @@ public class MembersController : ControllerBase
         return Ok(action);
     }
 
-    [HttpPatch("{id:guid}")]
+    [HttpPut("{id:guid}")]
     public async Task<ActionResult<MemberDetailsDto>> UpdateMemberDetails(
         [FromRoute] Guid id, [FromBody] SaveMemberDto memberDto)
     {
@@ -99,6 +99,20 @@ public class MembersController : ControllerBase
         [FromRoute] Guid id, [FromBody] UpdateMemberPropertyDto propertyDto)
     {
         var action = await _memberUpdater.UpdateProperty(id, propertyDto);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(action);
+    }
+
+    [HttpPut("{id:guid}/MemberRole")]
+    public async Task<ActionResult<MemberPropertyDto>> UpdateMemberRole(
+        [FromRoute] Guid id, [FromBody] UpdateMemberRoleDto roleDto)
+    {
+        var action = await _memberUpdater.UpdateRole(id, roleDto);
 
         if (action == null)
         {

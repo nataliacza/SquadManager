@@ -4,6 +4,7 @@ using SquadManager.Database;
 using SquadManager.Database.Models;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
+using SquadManager.Services.Common;
 
 namespace SquadManager.Services.Core.Members;
 
@@ -50,7 +51,7 @@ public class EfMemberUpdater : IMemberUpdater
         
         var update = _autoMapper.Map(updateDto, property);
 
-        ResetDatesForFields(update, property);
+        ResetMemberFields.ResetDates(update, property);
 
         _dbContext.MemberProperties.Update(property);
         await _dbContext.SaveChangesAsync();
@@ -60,45 +61,23 @@ public class EfMemberUpdater : IMemberUpdater
         return dto;
     }
 
-    private static void ResetDatesForFields(MemberProperty update, MemberProperty property)
+    public async Task<MemberPropertyDto> UpdateRole(Guid id, UpdateMemberRoleDto updateDto)
     {
-        if (update.Kpp == false)
+        var property = await _dbContext.MemberProperties
+            .FirstOrDefaultAsync(x => x.MemberId == id);
+
+        if (property == null)
         {
-            property.KppDate = null;
-            property.KppExpiration = null;
+            return null!;
         }
-        if (update.MedicalExamination == false)
-        {
-            property.MedicalExaminationDate = null;
-            property.MedicalExaminationExpiration = null;
-        }
-        if (update.BasicCourse == false)
-        {
-            property.BasicCourseDate = null;
-        }
-        if (update.GuideCourse == false)
-        {
-            property.GuideCourseDate = null;
-        }
-        if (update.InstructorCourse == false)
-        {
-            property.InstructorCourseDate = null;
-        }
-        if (update.ExaminerCourse == false)
-        {
-            property.ExaminerCourseDate = null;
-        }
-        if (update.CommanderCourse == false)
-        {
-            property.CommanderCourseDate = null;
-        }
-        if (update.HeightCourse == false)
-        {
-            property.HeightCourseDate = null;
-        }
-        if (update.HelicopterCourse == false)
-        {
-            property.HelicopterCourseDate = null;
-        }
+
+        var update = _autoMapper.Map(updateDto, property);
+
+        _dbContext.MemberProperties.Update(property);
+        await _dbContext.SaveChangesAsync();
+
+        var dto = _autoMapper.Map<MemberPropertyDto>(property);
+
+        return dto;
     }
 }
