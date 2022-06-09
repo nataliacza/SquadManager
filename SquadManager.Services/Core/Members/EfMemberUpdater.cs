@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
+using SquadManager.Database.Models;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -47,9 +48,9 @@ public class EfMemberUpdater : IMemberUpdater
             return null!;
         }
         
-        //TODO: map changes enum state to 0 if null
-        //TODO: cover if false, set date to null
         var update = _autoMapper.Map(updateDto, property);
+
+        ResetDatesForFields(update, property);
 
         _dbContext.MemberProperties.Update(property);
         await _dbContext.SaveChangesAsync();
@@ -57,5 +58,47 @@ public class EfMemberUpdater : IMemberUpdater
         var dto = _autoMapper.Map<MemberPropertyDto>(property);
 
         return dto;
+    }
+
+    private static void ResetDatesForFields(MemberProperty update, MemberProperty property)
+    {
+        if (update.Kpp == false)
+        {
+            property.KppDate = null;
+            property.KppExpiration = null;
+        }
+        if (update.MedicalExamination == false)
+        {
+            property.MedicalExaminationDate = null;
+            property.MedicalExaminationExpiration = null;
+        }
+        if (update.BasicCourse == false)
+        {
+            property.BasicCourseDate = null;
+        }
+        if (update.GuideCourse == false)
+        {
+            property.GuideCourseDate = null;
+        }
+        if (update.InstructorCourse == false)
+        {
+            property.InstructorCourseDate = null;
+        }
+        if (update.ExaminerCourse == false)
+        {
+            property.ExaminerCourseDate = null;
+        }
+        if (update.CommanderCourse == false)
+        {
+            property.CommanderCourseDate = null;
+        }
+        if (update.HeightCourse == false)
+        {
+            property.HeightCourseDate = null;
+        }
+        if (update.HelicopterCourse == false)
+        {
+            property.HelicopterCourseDate = null;
+        }
     }
 }

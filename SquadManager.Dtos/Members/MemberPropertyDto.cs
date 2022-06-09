@@ -17,16 +17,22 @@ public class MemberPropertyDto
 
     public bool? BasicCourse { get; set; }
     public DateTime? BasicCourseDate { get; set; }
+
     public bool? GuideCourse { get; set; }
     public DateTime? GuideCourseDate { get; set; }
+
     public bool? InstructorCourse { get; set; }
     public DateTime? InstructorCourseDate { get; set; }
+
     public bool? ExaminerCourse { get; set; }
     public DateTime? ExaminerCourseDate { get; set; }
+
     public bool? CommanderCourse { get; set; }
     public DateTime? CommanderCourseDate { get; set; }
+
     public bool? HeightCourse { get; set; }
     public DateTime? HeightCourseDate { get; set; }
+
     public bool? HelicopterCourse { get; set; }
     public DateTime? HelicopterCourseDate { get; set; }
 }

@@ -1,5 +1,4 @@
-﻿using SquadManager.Database.Enums;
-using SquadManager.Dtos.Validation;
+﻿using SquadManager.Dtos.Validation;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -7,13 +6,11 @@ namespace SquadManager.Dtos.Members;
 
 public class UpdateMemberPropertyDto
 {
-    [Range(0, 14)]
-    public RoleType RoleType { get; set; }
-
     public bool? Kpp { get; set; }
     [RequiredIf(nameof(Kpp), true)]
     [DataType(DataType.Date)]
     [NotFutureDate]
+
     public DateTime? KppDate { get; set; }
     [RequiredIf(nameof(Kpp), true)]
     [DataType(DataType.Date)]
