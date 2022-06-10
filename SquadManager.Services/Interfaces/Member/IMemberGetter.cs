@@ -1,4 +1,5 @@
-﻿using SquadManager.Dtos.Members;
+﻿using SquadManager.Dtos.MemberProperty;
+using SquadManager.Dtos.Members;
 
 namespace SquadManager.Services.Interfaces.Member;
 
@@ -8,4 +9,5 @@ public interface IMemberGetter
     Task<MemberPropertyDto> GetMemberProperty(Guid id);
     Task<IEnumerable<MemberDogDto>> GetMemberDogList(Guid id);
     Task<IEnumerable<MemberDetailsDto>> GetMemberList();
+    Task<IEnumerable<MemberWithPropertiesDto>> GetMembersWithProperties();
 }

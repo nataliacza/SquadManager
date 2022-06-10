@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SquadManager.Dtos.MemberProperty;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -76,6 +77,14 @@ public class MembersController : ControllerBase
     public async Task<ActionResult<IEnumerable<MemberDetailsDto>>> GetMembers()
     {
         var action = await _memberGetter.GetMemberList();
+
+        return Ok(action);
+    }
+
+    [HttpGet("MembersWithProperties")]
+    public async Task<ActionResult<IEnumerable<MemberWithPropertiesDto>>> GetMembersWithProperties()
+    {
+        var action = await _memberGetter.GetMembersWithProperties();
 
         return Ok(action);
     }
