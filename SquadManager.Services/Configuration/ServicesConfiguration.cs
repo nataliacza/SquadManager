@@ -10,11 +10,14 @@ public static class ServicesConfiguration
     public static void AddCoreServices(this IServiceCollection services)
     {
         services.AddScoped<IMemberCreator, EfMemberCreator>();
-        services.AddScoped<IMemberGetter, EfMemberGetter>();
-
         services.AddScoped<IDogCreator, EfDogCreator>();
+
+        services.AddScoped<IMemberGetter, EfMemberGetter>();
         services.AddScoped<IDogGetter, EfDogGetter>();
 
         services.AddScoped<IMemberUpdater, EfMemberUpdater>();
+
+        services.AddScoped<IMemberDeleter, EfMemberDeleter>();
+        
     }
 }
