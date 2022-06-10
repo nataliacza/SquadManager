@@ -1,4 +1,5 @@
-﻿using SquadManager.Dtos.Members;
+﻿using SquadManager.Dtos.MemberProperty;
+using SquadManager.Dtos.Members;
 
 namespace SquadManager.Services.Interfaces.Member;
 

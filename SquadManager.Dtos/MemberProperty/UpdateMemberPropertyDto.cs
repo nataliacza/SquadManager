@@ -1,7 +1,7 @@
 ﻿using SquadManager.Dtos.Validation;
 using System.ComponentModel.DataAnnotations;
 
-namespace SquadManager.Dtos.Members;
+namespace SquadManager.Dtos.MemberProperty;
 
 public class UpdateMemberPropertyDto
 {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
+using SquadManager.Dtos.MemberProperty;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -72,6 +73,17 @@ public class EfMemberGetter : IMemberGetter
             .ToArrayAsync();
 
         var dto = _autoMapper.Map<IEnumerable<MemberDetailsDto>>(members);
+
+        return dto;
+    }
+
+    public async Task<IEnumerable<MemberWithPropertiesDto>> GetMembersWithProperties()
+    {
+        var members = await _dbContext.Members
+            .Include(x => x.Properties)
+            .ToArrayAsync();
+
+        var dto = _autoMapper.Map<IEnumerable<MemberWithPropertiesDto>>(members);
 
         return dto;
     }

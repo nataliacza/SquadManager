@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="Accounts\" />
     <Folder Include="Exams\" />
-    <Folder Include="MemberProperties\" />
   </ItemGroup>
 
   <ItemGroup>

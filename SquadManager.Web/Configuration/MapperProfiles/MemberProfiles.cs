@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SquadManager.Database.Models;
-using SquadManager.Dtos.Dogs;
+using SquadManager.Dtos.MemberProperty;
 using SquadManager.Dtos.Members;
 
 namespace SquadManager.Web.Configuration.MapperProfiles;
@@ -27,7 +27,8 @@ public class MemberProfiles : Profile
         CreateMap<UpdateMemberPropertyDto, MemberProperty>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-        CreateMap<UpdateMemberRoleDto, MemberProperty>()
-            .ReverseMap();
+        CreateMap<UpdateMemberRoleDto, MemberProperty>();
+
+        CreateMap<Member, MemberWithPropertiesDto>();
     }
 }

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
-using SquadManager.Database.Models;
+using SquadManager.Dtos.MemberProperty;
 using SquadManager.Dtos.Members;
-using SquadManager.Services.Interfaces.Member;
 using SquadManager.Services.Common;
+using SquadManager.Services.Interfaces.Member;
 
 namespace SquadManager.Services.Core.Members;
 
@@ -48,7 +48,7 @@ public class EfMemberUpdater : IMemberUpdater
         {
             return null!;
         }
-        
+
         var update = _autoMapper.Map(updateDto, property);
 
         ResetMemberFields.ResetDates(update, property);

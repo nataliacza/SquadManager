@@ -1,6 +1,6 @@
 ﻿using SquadManager.Database.Enums;
 
-namespace SquadManager.Dtos.Members;
+namespace SquadManager.Dtos.MemberProperty;
 
 public class MemberPropertyDto
 {
