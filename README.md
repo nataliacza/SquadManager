@@ -30,6 +30,8 @@ Future plans:
 - Training planner.
 - Alarm system used for search actions.
 
+:raised_hands: Whole project described in Jira.
+
 ### Tech
 - ASP.NET Core 6
 - REST API
