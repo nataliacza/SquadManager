@@ -1,4 +1,4 @@
-namespace Tests;
+namespace SquadManager.IntegrationTests;
 
 public class UnitTest1
 {
