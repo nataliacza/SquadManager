@@ -124,7 +124,7 @@ public class MembersController : ControllerBase
         return Ok(action);
     }
 
-    [HttpPatch("{id:guid}/MemberProperties")]
+    [HttpPut("{id:guid}/MemberProperties")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -141,7 +141,7 @@ public class MembersController : ControllerBase
         return Ok(action);
     }
 
-    [HttpPut("{id:guid}/MemberRole")]
+    [HttpPatch("{id:guid}/MemberRole")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
