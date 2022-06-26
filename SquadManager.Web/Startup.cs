@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using SquadManager.Database;
 using SquadManager.Services.Configuration;
 using SquadManager.Web.Configuration;
+using System.Reflection;
 using System.Text;
 
 namespace SquadManager.Web;
@@ -68,9 +70,16 @@ public class Startup
         // Other
         services.AddAutomapper();
         services.AddSwaggerGen();
-
+        services.AddMvc();
         services.AddHttpContextAccessor();
-        services.AddControllersWithViews();
+
+        services
+            .AddControllers()
+            .AddFluentValidation(x =>
+            {
+                x.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+            });
+
         services.AddRazorPages();
     }
 
