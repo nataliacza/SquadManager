@@ -51,7 +51,7 @@ public class EfMemberUpdater : IMemberUpdater
 
         var update = _autoMapper.Map(updateDto, property);
 
-        ResetMemberFields.ResetDates(update, property);
+        ResetDateFieldsForFalseValues.ResetDates(update, property);
 
         _dbContext.MemberProperties.Update(property);
         await _dbContext.SaveChangesAsync();

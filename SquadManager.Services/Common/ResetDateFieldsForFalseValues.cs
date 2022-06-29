@@ -1,7 +1,8 @@
 ﻿using SquadManager.Database.Models;
 
 namespace SquadManager.Services.Common;
-public class ResetMemberFields
+
+public class ResetDateFieldsForFalseValues
 {
     public static void ResetDates(MemberProperty update, MemberProperty property)
     {
