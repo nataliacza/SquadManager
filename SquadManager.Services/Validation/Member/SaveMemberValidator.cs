@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using SquadManager.Dtos.Members;
 
-namespace SquadManager.Services.Validation;
+namespace SquadManager.Services.Validation.Member;
 
-public class EfMemberCreatorValidator : AbstractValidator<SaveMemberDto>
+public class SaveMemberValidator : AbstractValidator<SaveMemberDto>
 {
-    public EfMemberCreatorValidator()
+    public SaveMemberValidator()
     {
         RuleFor(x => x.FirstName)
             .MaximumLength(30)
