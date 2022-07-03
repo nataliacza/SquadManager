@@ -9,11 +9,9 @@ public class CreateDogValidator : AbstractValidator<CreateDogDto>
     {
         RuleFor(x => x.Name)
             .MaximumLength(30)
-            .NotNull()
             .NotEmpty();
 
         RuleFor(x => x.OwnerId)
-            .NotNull()
             .NotEmpty();
     }
 }
