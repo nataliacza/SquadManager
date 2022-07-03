@@ -26,7 +26,7 @@ public class EfDogCreator : IDogCreator
         //TODO: handle exception
         if (member == null)
         {
-            throw new Exception();
+            return null!;
         }
 
         var dog = _autoMapper.Map<Dog>(createDogDto);
