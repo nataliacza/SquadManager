@@ -19,6 +19,8 @@ public class DogsController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<DogDto>> CreateDog([FromBody] CreateDogDto createDogDto)
     {
         var action = await _dogCreator.CreateDog(createDogDto);
