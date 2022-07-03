@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SquadManager.Database.Models;
 using SquadManager.Dtos.Dogs;
 using SquadManager.Services.Interfaces.Dog;
 
@@ -19,9 +20,17 @@ public class DogsController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<DogDto>> CreateDog([FromBody] CreateDogDto createDogDto)
     {
         var action = await _dogCreator.CreateDog(createDogDto);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
 
         return Ok(action);
     }
