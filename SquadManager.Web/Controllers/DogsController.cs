@@ -44,7 +44,9 @@ public class DogsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<DogDto>>> GetDogs()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<DogListDto>>> GetDogs()
     {
         var action = await _dogGetter.GetDogList();
 
