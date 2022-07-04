@@ -36,9 +36,17 @@ public class DogsController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<DogDto>> GetDogId([FromRoute] Guid id)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<DogDto>> GetDogById([FromRoute] Guid id)
     {
         var action = await _dogGetter.GetDog(id);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
 
         return Ok(action);
     }
