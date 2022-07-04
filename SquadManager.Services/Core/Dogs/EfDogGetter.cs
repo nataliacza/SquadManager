@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
+using SquadManager.Database.Models;
 using SquadManager.Dtos.Dogs;
 using SquadManager.Services.Interfaces.Dog;
 
@@ -21,8 +23,14 @@ public class EfDogGetter : IDogGetter
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<DogDto>> GetDogList()
+    public async Task<IEnumerable<DogListDto>> GetDogList()
     {
-        throw new NotImplementedException();
+        var dog = await _dbContext.Dogs
+            .Include(x => x.Owner)
+            .ToArrayAsync();
+
+        var dto = _autoMapper.Map<IEnumerable<DogListDto>>(dog);
+
+        return dto;
     }
 }
