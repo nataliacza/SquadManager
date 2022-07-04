@@ -32,7 +32,10 @@ public class DogsController : ControllerBase
             return NotFound();
         }
 
-        return Ok(action);
+        return CreatedAtAction(
+            nameof(GetDogById),
+            new { id = action.Id },
+            action);
     }
 
     [HttpGet("{id:guid}")]
