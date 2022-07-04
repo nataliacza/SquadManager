@@ -20,7 +20,18 @@ public class EfDogGetter : IDogGetter
 
     public async Task<DogDto> GetDog(Guid id)
     {
-        throw new NotImplementedException();
+        var dog = await _dbContext.Dogs
+            .Include(x => x.Owner)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (dog == null)
+        {
+            return null!;
+        }
+
+        var dto = _autoMapper.Map<DogDto>(dog);
+
+        return dto;
     }
 
     public async Task<IEnumerable<DogListDto>> GetDogList()
