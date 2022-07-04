@@ -10,4 +10,6 @@ public class DogDto
     public string? ChipNumber { get; set; }
 
     public Guid OwnerId { get; set; }
+    public string OwnerFirstName { get; set; } = null!;
+    public string OwnerLastName { get; set; } = null!;
 }

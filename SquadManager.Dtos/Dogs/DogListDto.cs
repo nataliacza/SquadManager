@@ -1,4 +1,5 @@
 ﻿namespace SquadManager.Dtos.Dogs;
+
 public class DogListDto
 {
     public Guid Id { get; set; }
