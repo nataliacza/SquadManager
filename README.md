@@ -30,7 +30,7 @@ Future plans:
 - Training planner.
 - Alarm system used for search actions.
 
-:raised_hands: Whole project described in Jira.
+:raised_hands: Whole project described in [Jira](https://team-1622654323870.atlassian.net/jira/software/projects/SQM/boards/2).
 
 ### Tech
 - ASP.NET Core 6
@@ -38,5 +38,7 @@ Future plans:
 - Automapper
 - EntityFramework
 - Swagger
+- FluentValidation
+- Using local databasse (MySQL)
 
 ...TBC...
