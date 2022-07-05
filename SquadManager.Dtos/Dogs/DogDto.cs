@@ -1,11 +1,13 @@
-﻿namespace SquadManager.Dtos.Dogs;
+﻿using SquadManager.Database.Enums;
+
+namespace SquadManager.Dtos.Dogs;
 
 public class DogDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
     public string? Breeder { get; set; }
-    public string? Gender { get; set; }
+    public DogGender Gender { get; set; }
     public DateTime? DateOfBirth { get; set; }
     public string? ChipNumber { get; set; }
 
