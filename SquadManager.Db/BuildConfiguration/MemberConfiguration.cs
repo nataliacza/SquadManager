@@ -1,8 +1,8 @@
-﻿using SquadManager.Database.Models;
+﻿using SquadManager.Db.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SquadManager.Database.BuildConfiguration;
+namespace SquadManager.Db.BuildConfiguration;
 
 public class MemberConfiguration : IEntityTypeConfiguration<Member>
 {
@@ -34,10 +34,6 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
         builder.HasOne(x => x.Properties)
             .WithOne(x => x.Member)
             .HasForeignKey<Member>(x => x.Id)
-            .IsRequired(true);
-
-        builder.Property(x => x.IsDeleted)
-            .HasDefaultValue(false)
             .IsRequired(true);
 
         builder.HasMany(x => x.Dogs)

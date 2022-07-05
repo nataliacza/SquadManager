@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SquadManager.Database;
+using SquadManager.Db;
 using SquadManager.Dtos.MemberProperty;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
@@ -9,10 +9,10 @@ namespace SquadManager.Services.Core.Members;
 
 public class EfMemberGetter : IMemberGetter
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly SquadManagerContext _dbContext;
     private readonly IMapper _autoMapper;
 
-    public EfMemberGetter(ApplicationDbContext dbContext, IMapper autoMapper)
+    public EfMemberGetter(SquadManagerContext dbContext, IMapper autoMapper)
     {
         _dbContext = dbContext;
         _autoMapper = autoMapper;

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SquadManager.Database;
+using SquadManager.Db;
 using SquadManager.Dtos.Dogs;
 using SquadManager.Services.Interfaces.Dog;
 
@@ -8,10 +8,10 @@ namespace SquadManager.Services.Core.Dogs;
 
 public class EfDogDeleter : IDogDeleter
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly SquadManagerContext _dbContext;
     private readonly IMapper _mapper;
 
-    public EfDogDeleter(ApplicationDbContext dbContext, IMapper mapper)
+    public EfDogDeleter(SquadManagerContext dbContext, IMapper mapper)
     {
         _dbContext = dbContext;
         _mapper = mapper;

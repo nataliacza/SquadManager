@@ -1,4 +1,4 @@
-﻿using SquadManager.Database.Enums;
+﻿using SquadManager.Db.Enums;
 
 namespace SquadManager.Dtos.Dogs;
 

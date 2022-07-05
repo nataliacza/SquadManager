@@ -1,8 +1,8 @@
 ﻿using SquadManager.Db.Enums;
 
-namespace SquadManager.Dtos.Dogs;
+namespace SquadManager.Db.Models;
 
-public class DogDto
+public class Dog
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
@@ -12,6 +12,7 @@ public class DogDto
     public string? ChipNumber { get; set; }
 
     public Guid OwnerId { get; set; }
-    public string OwnerFirstName { get; set; } = null!;
-    public string OwnerLastName { get; set; } = null!;
+    public virtual Member Owner { get; set; } = null!;
+
+    public virtual ICollection<Exam>? Exams { get; set; }
 }

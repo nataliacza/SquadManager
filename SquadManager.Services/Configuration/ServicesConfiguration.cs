@@ -8,7 +8,7 @@ namespace SquadManager.Services.Configuration;
 
 public static class ServicesConfiguration
 {
-    public static void AddCoreServices(this IServiceCollection services)
+    public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
         services.AddScoped<IMemberCreator, EfMemberCreator>();
         services.AddScoped<IMemberGetter, EfMemberGetter>();
@@ -19,5 +19,7 @@ public static class ServicesConfiguration
         services.AddScoped<IDogGetter, EfDogGetter>();
         services.AddScoped<IDogUpdater, EfDogUpdater>();
         services.AddScoped<IDogDeleter, EfDogDeleter>();
+
+        return services;
     }
 }

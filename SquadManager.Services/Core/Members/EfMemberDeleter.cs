@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SquadManager.Database;
+using SquadManager.Db;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -8,10 +8,10 @@ namespace SquadManager.Services.Core.Members;
 
 public class EfMemberDeleter : IMemberDeleter
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly SquadManagerContext _dbContext;
     private readonly IMapper _autoMapper;
 
-    public EfMemberDeleter(ApplicationDbContext dbContext, IMapper autoMapper)
+    public EfMemberDeleter(SquadManagerContext dbContext, IMapper autoMapper)
     {
         _dbContext = dbContext;
         _autoMapper = autoMapper;
