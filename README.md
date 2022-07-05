@@ -22,6 +22,7 @@ MVP features:
 - Dog list with basic information - name, owner, chip id, etc.
 - Exam list with basic information - basicly who, what, when.
 - CRUD for all above.
+- Authorization and authentication applied.
 
 Future plans:
 - Equipment list with useful information.
