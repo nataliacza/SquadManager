@@ -3,9 +3,9 @@ using SquadManager.Dtos.Dogs;
 
 namespace SquadManager.Services.Validation.Member;
 
-public class CreateDogValidator : AbstractValidator<SaveDogDto>
+public class SaveDogValidator : AbstractValidator<SaveDogDto>
 {
-    public CreateDogValidator()
+    public SaveDogValidator()
     {
         RuleFor(x => x.Name)
             .MaximumLength(30)
