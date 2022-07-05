@@ -83,4 +83,21 @@ public class DogsController : ControllerBase
 
         return Ok(action);
     }
+
+    [HttpPut("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<DogDto>> UpdateDetails(
+        [FromRoute] Guid id, [FromBody] UpdateDogDetailsDto updateDetailsDto)
+    {
+        var action = await _dogUpdater.UpdateDogDetails(id, updateDetailsDto);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(action);
+    }
 }
