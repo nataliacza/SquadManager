@@ -49,6 +49,7 @@ public class EfDogUpdater : IDogUpdater
     public async Task<DogDto> UpdateDogDetails(Guid id, UpdateDogDetailsDto updateDetailsDto)
     {
         var dog = await _dbContext.Dogs
+            .Include(x => x.Owner)
             .FirstOrDefaultAsync(x => x.Id == id);
 
         if (dog == null)

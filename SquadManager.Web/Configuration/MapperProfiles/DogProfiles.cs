@@ -16,5 +16,8 @@ public class DogProfiles : Profile
 
         CreateMap<DogListDto, Dog>()
             .ReverseMap();
+
+        CreateMap<UpdateDogDetailsDto, Dog>()
+            .ReverseMap();
     }
 }
