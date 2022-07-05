@@ -30,7 +30,7 @@ Future plans:
 - Training planner.
 - Alarm system used for search actions.
 
-:raised_hands: Whole project described in [Jira](https://team-1622654323870.atlassian.net/jira/software/projects/SQM/boards/2).
+:raised_hands: Whole project described in [Jira](https://team-1622654323870.atlassian.net/jira/software/projects/SQM/boards/2), as I want to involve other developers.
 
 ### Tech
 - ASP.NET Core 6
