@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
-using SquadManager.Database.Models;
 using SquadManager.Dtos.Dogs;
 using SquadManager.Services.Interfaces.Dog;
 
@@ -38,6 +37,26 @@ public class EfDogUpdater : IDogUpdater
         }
 
         var contextDto = _mapper.Map(updateDto, dog);
+
+        _dbContext.Update(contextDto);
+        await _dbContext.SaveChangesAsync();
+
+        var dto = _mapper.Map<DogDto>(dog);
+
+        return dto;
+    }
+
+    public async Task<DogDto> UpdateDogDetails(Guid id, UpdateDogDetailsDto updateDetailsDto)
+    {
+        var dog = await _dbContext.Dogs
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (dog == null)
+        {
+            return null!;
+        }
+
+        var contextDto = _mapper.Map(updateDetailsDto, dog);
 
         _dbContext.Update(contextDto);
         await _dbContext.SaveChangesAsync();
