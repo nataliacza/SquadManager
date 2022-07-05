@@ -18,7 +18,7 @@ public class EfDogCreator : IDogCreator
         _autoMapper = autoMapper;
     }
 
-    public async Task<DogDto> CreateDog(CreateDogDto createDogDto)
+    public async Task<DogDto> CreateDog(SaveDogDto createDogDto)
     {
         var member = await _dbContext.Members
             .FirstOrDefaultAsync(x => x.Id == createDogDto.OwnerId);
