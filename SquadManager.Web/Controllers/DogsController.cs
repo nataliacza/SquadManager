@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SquadManager.Database.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using SquadManager.Dtos.Dogs;
 using SquadManager.Services.Interfaces.Dog;
 
@@ -12,18 +10,23 @@ public class DogsController : ControllerBase
 {
     private readonly IDogCreator _dogCreator;
     private readonly IDogGetter _dogGetter;
+    private readonly IDogUpdater _dogUpdater;
 
-    public DogsController(IDogCreator dogCreator, IDogGetter dogGetter)
+    public DogsController(
+        IDogCreator dogCreator, 
+        IDogGetter dogGetter, 
+        IDogUpdater dogUpdater)
     {
         _dogCreator = dogCreator;
         _dogGetter = dogGetter;
+        _dogUpdater = dogUpdater;
     }
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<DogDto>> CreateDog([FromBody] CreateDogDto createDogDto)
+    public async Task<ActionResult<DogDto>> CreateDog([FromBody] SaveDogDto createDogDto)
     {
         var action = await _dogCreator.CreateDog(createDogDto);
 
@@ -60,6 +63,23 @@ public class DogsController : ControllerBase
     public async Task<ActionResult<IEnumerable<DogListDto>>> GetDogs()
     {
         var action = await _dogGetter.GetDogList();
+
+        return Ok(action);
+    }
+
+    [HttpPut("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<DogDto>> UpdateDogById(
+        [FromRoute] Guid id, [FromBody] SaveDogDto updateDto)
+    {
+        var action = await _dogUpdater.UpdateDog(id, updateDto);
+
+        if (action == null)
+        {
+            return NotFound();
+        }
 
         return Ok(action);
     }
