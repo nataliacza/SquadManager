@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Services.Configurations;
+using SquadManager.Services.Middleware;
 using SquadManager.Web.Configurations;
 
 
@@ -39,6 +40,8 @@ public class Startup
                 opt.AutomaticValidationEnabled = true;
             });
 
+        services.AddScoped<ErrorHandlingMiddleware>();
+
         services.AddRazorPages();
     }
 
@@ -56,6 +59,8 @@ public class Startup
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
+
+        app.UseMiddleware<ErrorHandlingMiddleware>();
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 

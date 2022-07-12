@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Dto.Members;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Member;
 
 
@@ -32,7 +33,7 @@ public class EfMemberDeleter : IMemberDeleter
         // TODO: cover proper approach to exception handling
         if (member.Dogs!.Any())
         {
-            throw new InvalidOperationException();
+            throw new ConflictException();
         }
 
         _dbContext.Members.Remove(member);
