@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Services.Configurations;
 using SquadManager.Web.Configurations;
@@ -30,7 +31,13 @@ public class Startup
 
         services.AddHttpContextAccessor();
 
-        services.AddControllers();
+        // NOTE: There is an issue with pipeline: in order to add-migration, Fluent Validation needs to be commented...
+        services.AddControllers()
+            .AddFluentValidation(opt =>
+            {
+                opt.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+                opt.AutomaticValidationEnabled = true;
+            });
 
         services.AddRazorPages();
     }

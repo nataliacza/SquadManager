@@ -2,7 +2,7 @@
 using SquadManager.Dto.Dogs;
 
 
-namespace SquadManager.Services.Validation.Member;
+namespace SquadManager.Services.Validation.Dog;
 
 public class SaveDogValidator : AbstractValidator<SaveDogDto>
 {

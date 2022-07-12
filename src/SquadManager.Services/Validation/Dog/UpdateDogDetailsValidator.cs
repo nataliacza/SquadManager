@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SquadManager.Database.Enums;
 using SquadManager.Dto.Dogs;
 
 

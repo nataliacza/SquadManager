@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using SquadManager.Dto.Dogs;
 using SquadManager.Services.Interfaces.Dog;
+
 
 namespace SquadManager.Web.Controllers;
 
@@ -31,11 +35,6 @@ public class DogsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<DogDto>> CreateDog([FromBody] SaveDogDto createDogDto)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var action = await _dogCreator.CreateDog(createDogDto);
 
         if (action == null)
