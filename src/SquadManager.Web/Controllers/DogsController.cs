@@ -37,11 +37,6 @@ public class DogsController : ControllerBase
     {
         var action = await _dogCreator.CreateDog(createDogDto);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return CreatedAtAction(
             nameof(GetDogById),
             new { id = action.Id },
@@ -55,11 +50,6 @@ public class DogsController : ControllerBase
     public async Task<ActionResult<DogDto>> GetDogById([FromRoute] Guid id)
     {
         var action = await _dogGetter.GetDog(id);
-
-        if (action == null)
-        {
-            return NotFound();
-        }
 
         return Ok(action);
     }
@@ -83,11 +73,6 @@ public class DogsController : ControllerBase
     {
         var action = await _dogUpdater.UpdateDog(id, updateDto);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return Ok(action);
     }
 
@@ -100,11 +85,6 @@ public class DogsController : ControllerBase
     {
         var action = await _dogUpdater.UpdateDogDetails(id, updateDetailsDto);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return Ok(action);
     }
 
@@ -114,11 +94,6 @@ public class DogsController : ControllerBase
     public async Task<ActionResult<DogDto>> DeleteDog([FromRoute] Guid id)
     {
         var action = await _dogDeleter.DeleteDog(id);
-
-        if (action == null)
-        {
-            return NotFound();
-        }
 
         return Ok(action);
     }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Dto.Dogs;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Dog;
 
 
@@ -25,16 +26,15 @@ public class EfDogUpdater : IDogUpdater
 
         if (dog == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var member = await _dbContext.Members
             .FirstOrDefaultAsync(x => x.Id == updateDto.OwnerId);
 
-        //TODO: cover exception
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var contextDto = _mapper.Map(updateDto, dog);
@@ -55,7 +55,7 @@ public class EfDogUpdater : IDogUpdater
 
         if (dog == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var contextDto = _mapper.Map(updateDetailsDto, dog);

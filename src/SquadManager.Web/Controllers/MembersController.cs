@@ -48,11 +48,6 @@ public class MembersController : ControllerBase
     {
         var action = await _memberGetter.GetMemberDetails(id);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return Ok(action);
     }
 
@@ -64,11 +59,6 @@ public class MembersController : ControllerBase
     {
         var action = await _memberGetter.GetMemberProperty(id);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return Ok(action);
     }
 
@@ -79,11 +69,6 @@ public class MembersController : ControllerBase
     public async Task<ActionResult<IEnumerable<MemberDogDto>>> GetMemberDogs([FromRoute] Guid id)
     {
         var action = await _memberGetter.GetMemberDogList(id);
-
-        if (action == null)
-        {
-            return NotFound();
-        }
 
         return Ok(action);
     }
@@ -117,11 +102,6 @@ public class MembersController : ControllerBase
     {
         var action = await _memberUpdater.UpdateDetails(id, memberDto);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return Ok(action);
     }
 
@@ -133,11 +113,6 @@ public class MembersController : ControllerBase
         [FromRoute] Guid id, [FromBody] UpdateMemberPropertyDto propertyDto)
     {
         var action = await _memberUpdater.UpdateProperty(id, propertyDto);
-
-        if (action == null)
-        {
-            return NotFound();
-        }
 
         return Ok(action);
     }
@@ -151,11 +126,6 @@ public class MembersController : ControllerBase
     {
         var action = await _memberUpdater.UpdateRole(id, roleDto);
 
-        if (action == null)
-        {
-            return NotFound();
-        }
-
         return Ok(action);
     }
 
@@ -167,11 +137,6 @@ public class MembersController : ControllerBase
     public async Task<ActionResult<MemberDto>> DeleteMember([FromRoute] Guid id)
     {
         var action = await _memberDeleter.DeleteMember(id);
-
-        if (action == null)
-        {
-            return NotFound();
-        }
 
         return Ok(action);
     }

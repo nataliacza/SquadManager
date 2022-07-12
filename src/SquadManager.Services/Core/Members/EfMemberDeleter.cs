@@ -27,10 +27,9 @@ public class EfMemberDeleter : IMemberDeleter
 
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
-        // TODO: cover proper approach to exception handling
         if (member.Dogs!.Any())
         {
             throw new ConflictException();

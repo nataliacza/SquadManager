@@ -4,6 +4,7 @@ using SquadManager.Database;
 using SquadManager.Dto.MemberProperty;
 using SquadManager.Dto.Members;
 using SquadManager.Services.Common;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Member;
 
 
@@ -27,7 +28,7 @@ public class EfMemberUpdater : IMemberUpdater
 
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var update = _autoMapper.Map(updateDto, member);
@@ -47,7 +48,7 @@ public class EfMemberUpdater : IMemberUpdater
 
         if (property == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var update = _autoMapper.Map(updateDto, property);
@@ -69,7 +70,7 @@ public class EfMemberUpdater : IMemberUpdater
 
         if (property == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var update = _autoMapper.Map(updateDto, property);
