@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Dto.Dogs;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Dog;
 
 
@@ -26,7 +27,7 @@ public class EfDogGetter : IDogGetter
 
         if (dog == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var dto = _autoMapper.Map<DogDto>(dog);

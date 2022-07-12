@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Dto.Dogs;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Dog;
 
 
@@ -25,7 +26,7 @@ public class EfDogDeleter : IDogDeleter
 
         if (dog == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         _dbContext.Remove(dog);

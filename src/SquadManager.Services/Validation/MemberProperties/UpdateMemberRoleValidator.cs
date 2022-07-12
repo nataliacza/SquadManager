@@ -9,7 +9,6 @@ public class UpdateMemberRoleValidator : AbstractValidator<UpdateMemberRoleDto>
     public UpdateMemberRoleValidator()
     {
         RuleFor(x => x.RoleType)
-            .NotEmpty()
             .IsInEnum();
     }
 }

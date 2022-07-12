@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Database.Models;
 using SquadManager.Dto.Dogs;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Dog;
 
 
@@ -24,10 +25,9 @@ public class EfDogCreator : IDogCreator
         var member = await _dbContext.Members
             .FirstOrDefaultAsync(x => x.Id == createDogDto.OwnerId);
 
-        //TODO: handle exception
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var dog = _autoMapper.Map<Dog>(createDogDto);

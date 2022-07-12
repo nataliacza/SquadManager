@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SquadManager.Database;
 using SquadManager.Dto.MemberProperty;
 using SquadManager.Dto.Members;
+using SquadManager.Services.Exceptions;
 using SquadManager.Services.Interfaces.Member;
 
 
@@ -26,7 +27,7 @@ public class EfMemberGetter : IMemberGetter
 
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var dto = _autoMapper.Map<MemberDetailsDto>(member);
@@ -41,7 +42,7 @@ public class EfMemberGetter : IMemberGetter
 
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var dto = _autoMapper.Map<MemberPropertyDto>(member);
@@ -56,7 +57,7 @@ public class EfMemberGetter : IMemberGetter
 
         if (member == null)
         {
-            return null!;
+            throw new NotFoundException();
         }
 
         var dogs = await _dbContext.Dogs
