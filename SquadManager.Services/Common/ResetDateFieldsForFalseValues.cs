@@ -1,4 +1,4 @@
-﻿using SquadManager.Database.Models;
+﻿using SquadManager.Db.Models;
 
 namespace SquadManager.Services.Common;
 

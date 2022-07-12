@@ -36,6 +36,10 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
             .HasForeignKey<Member>(x => x.Id)
             .IsRequired(true);
 
+        builder.Property(x => x.IsDeleted)
+            .HasDefaultValue(false)
+            .IsRequired(true);
+
         builder.HasMany(x => x.Dogs)
             .WithOne(x => x.Owner)
             .IsRequired(false);

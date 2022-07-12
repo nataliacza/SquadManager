@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SquadManager.Database;
-using SquadManager.Database.Models;
+using SquadManager.Db;
+using SquadManager.Db.Models;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Interfaces.Member;
 
@@ -8,10 +8,10 @@ namespace SquadManager.Services.Core.Members;
 
 public class EfMemberCreator : IMemberCreator
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly SquadManagerContext _dbContext;
     private readonly IMapper _autoMapper;
 
-    public EfMemberCreator(ApplicationDbContext dbContext, IMapper autoMapper)
+    public EfMemberCreator(SquadManagerContext dbContext, IMapper autoMapper)
     {
         _dbContext = dbContext;
         _autoMapper = autoMapper;

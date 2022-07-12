@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SquadManager.Database;
+using SquadManager.Db;
 using SquadManager.Dtos.MemberProperty;
 using SquadManager.Dtos.Members;
 using SquadManager.Services.Common;
@@ -10,10 +10,10 @@ namespace SquadManager.Services.Core.Members;
 
 public class EfMemberUpdater : IMemberUpdater
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly SquadManagerContext _dbContext;
     private readonly IMapper _autoMapper;
 
-    public EfMemberUpdater(ApplicationDbContext dbContext, IMapper mapper)
+    public EfMemberUpdater(SquadManagerContext dbContext, IMapper mapper)
     {
         _dbContext = dbContext;
         _autoMapper = mapper;

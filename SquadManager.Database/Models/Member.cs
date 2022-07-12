@@ -11,5 +11,7 @@ public class Member
     public Guid PropertyId { get; set; }
     public virtual MemberProperty Properties { get; set; } = null!;
 
+    public bool IsDeleted { get; set; }
+
     public virtual ICollection<Dog>? Dogs { get; set; }
 }

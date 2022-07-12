@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SquadManager.Database;
-using SquadManager.Database.Models;
+using SquadManager.Db;
+using SquadManager.Db.Models;
 using SquadManager.Dtos.Dogs;
 using SquadManager.Services.Interfaces.Dog;
 
@@ -9,10 +9,10 @@ namespace SquadManager.Services.Core.Members;
 
 public class EfDogCreator : IDogCreator
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly SquadManagerContext _dbContext;
     private readonly IMapper _autoMapper;
 
-    public EfDogCreator(ApplicationDbContext dbContext, IMapper autoMapper)
+    public EfDogCreator(SquadManagerContext dbContext, IMapper autoMapper)
     {
         _dbContext = dbContext;
         _autoMapper = autoMapper;

@@ -8,16 +8,18 @@ namespace SquadManager.Services.Configuration;
 
 public static class ServicesConfiguration
 {
-    public static void AddCoreServices(this IServiceCollection services)
+    public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
-        services.AddScoped<IMemberCreator, EfMemberCreator>();
-        services.AddScoped<IMemberGetter, EfMemberGetter>();
-        services.AddScoped<IMemberUpdater, EfMemberUpdater>();
-        services.AddScoped<IMemberDeleter, EfMemberDeleter>();
+        services.AddTransient<IMemberCreator, EfMemberCreator>();
+        services.AddTransient<IMemberGetter, EfMemberGetter>();
+        services.AddTransient<IMemberUpdater, EfMemberUpdater>();
+        services.AddTransient<IMemberDeleter, EfMemberDeleter>();
 
-        services.AddScoped<IDogCreator, EfDogCreator>();
-        services.AddScoped<IDogGetter, EfDogGetter>();
-        services.AddScoped<IDogUpdater, EfDogUpdater>();
-        services.AddScoped<IDogDeleter, EfDogDeleter>();
+        services.AddTransient<IDogCreator, EfDogCreator>();
+        services.AddTransient<IDogGetter, EfDogGetter>();
+        services.AddTransient<IDogUpdater, EfDogUpdater>();
+        services.AddTransient<IDogDeleter, EfDogDeleter>();
+
+        return services;
     }
 }
